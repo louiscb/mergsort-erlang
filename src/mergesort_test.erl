@@ -10,9 +10,14 @@
 
 -include_lib("eunit/include/eunit.hrl").
 
-simple_test() ->
+sequential_empty_list_test() ->
   ?assert(mergesort:ms([]) =:= []).
 
-test_with_real_values_test() ->
+parallel_empty_list_test() ->
+  ?assert(mergesort:pms([]) =:= []).
+
+sequential_mergesort_real_values_test() ->
   ?assert(mergesort:ms([27.0, 82.0, 43.0, 15.0, 10.0, 38.0, 9.0, 8.0]) =:= [8.0, 9.0, 10.0, 15.0, 27.0, 38.0, 43.0, 82.0]).
 
+concurrent_mergesort_real_values_test() ->
+  ?assert(mergesort:pms([27.0, 82.0, 43.0, 15.0, 10.0, 38.0, 9.0, 8.0]) =:= [8.0, 9.0, 10.0, 15.0, 27.0, 38.0, 43.0, 82.0]).
